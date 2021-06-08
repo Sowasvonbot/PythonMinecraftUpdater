@@ -21,5 +21,4 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
-          files: |
-            mc_server_downloader.py
+          files: mc_server_downloader.py
