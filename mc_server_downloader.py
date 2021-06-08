@@ -5,7 +5,8 @@ import json
 from typing import List, Tuple
 from urllib.error import URLError
 
-minecraft_url: str = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
+minecraft_url: str = \
+    "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
 script_mode = "snapshot"
 script_modes: Tuple[str, str] = ("snapshot", "release")
@@ -23,7 +24,9 @@ def get_json_file_from_url(url: str):
 
 def get_latest_version_url(version_json: dict):
     requested_version = version_json["latest"][script_mode]
-    print(f"Found version {requested_version} for selected mode: {script_mode}")
+    print(
+        f"Found version {requested_version} for selected mode: {script_mode}"
+    )
     # print(version_json)
 
     all_versions: List[dict] = version_json["versions"]
@@ -36,7 +39,6 @@ def get_latest_version_url(version_json: dict):
 
 
 def extract_server_download_url(version_json: dict):
-
     url = version_json["downloads"]["server"]["url"]
     return url
 
