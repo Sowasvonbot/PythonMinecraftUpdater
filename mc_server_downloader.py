@@ -1,7 +1,7 @@
-from pathlib import Path
+import json
 import sys
 import urllib.request as request
-import json
+from pathlib import Path
 from typing import List, Tuple
 from urllib.error import URLError
 
@@ -27,7 +27,6 @@ def get_latest_version_url(version_json: dict):
     print(
         f"Found version {requested_version} for selected mode: {script_mode}"
     )
-    # print(version_json)
 
     all_versions: List[dict] = version_json["versions"]
     for version in all_versions:
