@@ -12,13 +12,24 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      # ...
-      - name: "Build & test"
+      - uses: actions/checkout@v2
+      - name: "Set up Python 3.9"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: "test"
         run: |
-          echo "done!"
+          python -m pip install --upgrade pip
+          python -m pip install nose
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test with nosetest
+        run: |
+          nosetests .
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
-          files: mc_server_downloader.py
+          files: |
+            mc_server_downloader.py
